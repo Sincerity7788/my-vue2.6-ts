@@ -1,9 +1,11 @@
 const path = require("path");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack')
 
 
 module.exports = {
   mode: "development",// 模式--开发模式
+  watch: true,
   entry: {// 入口设置
     index: path.resolve(__dirname, "./src/index.ts")
   },
@@ -18,6 +20,10 @@ module.exports = {
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
+    alias: {
+      v3: path.resolve(__dirname, 'src/v3/'),
+      types: path.resolve(__dirname, 'src/types/'),
+    },
   },
   devtool: 'inline-source-map',// 追踪错误到代码的指定位置
   devServer: {
@@ -35,7 +41,7 @@ module.exports = {
     assets: false,
     builtAt: false,
     modules: false,
-    entrypoints: false
+    errorDetails: true
   },
   plugins: [// 插件的配置
     new HtmlWebpackPlugin({
@@ -48,6 +54,9 @@ module.exports = {
       },
       hash: true
     }),
+    new webpack.DefinePlugin({
+      __DEV__:  JSON.stringify(true)
+    })
   ],
   output: {// 出口的配置
     filename: "[name].bundle.js",
