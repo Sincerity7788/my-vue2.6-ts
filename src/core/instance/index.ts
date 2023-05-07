@@ -10,7 +10,7 @@ function Vue(){
 }
 
 
-// @ts-ignore
+//@ts-expect-error Vue has function type
 initMixin(Vue)
 // @ts-ignore
 stateMixin(Vue)

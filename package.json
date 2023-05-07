@@ -17,6 +17,7 @@
     "webpack-dev-server": "^4.13.3"
   },
   "dependencies": {
-    "html-webpack-plugin": "^5.5.1"
+    "html-webpack-plugin": "^5.5.1",
+    "prettier": "^2.8.8"
   }
 }
