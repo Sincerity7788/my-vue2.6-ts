@@ -7,6 +7,11 @@ export function isServerRendering(){
     console.log("判断当前是否在ssr环境中")
 }
 
+export interface SimpleSet {
+  has(key: string | number): boolean
+  add(key: string | number): any
+  clear(): void
+}
 
 
 

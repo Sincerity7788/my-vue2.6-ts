@@ -1,3 +1,5 @@
+import Watcher from "../core/observer/watcher";
+import {EffectScope} from "../v3/reactivity/effectScope";
 
 export declare class Component {
     constructor(options?: any)
@@ -8,5 +10,7 @@ export declare class Component {
 
     _isVue: true
     __v_skip: true
-    _scope: true
+    _scope: EffectScope
+
+    _watcher: Watcher | null
 }

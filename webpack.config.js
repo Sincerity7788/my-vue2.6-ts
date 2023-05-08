@@ -23,6 +23,7 @@ module.exports = {
     alias: {
       v3: path.resolve(__dirname, 'src/v3/'),
       types: path.resolve(__dirname, 'src/types/'),
+      shared: path.resolve(__dirname, 'src/shared/'),
     },
   },
   devtool: 'inline-source-map',// 追踪错误到代码的指定位置
