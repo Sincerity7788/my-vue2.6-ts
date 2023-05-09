@@ -1,11 +1,23 @@
+// @ts-nocheck
 import {
   activeEffectScope,
   recordEffectScope,
 } from "v3/reactivity/effectScope";
-import { isFunction, isObject, noop, remove, parsePath } from "../util";
-import type { SimpleSet } from "../util"
+import {
+  isFunction,
+  isObject,
+  noop,
+  remove,
+  parsePath,
+  handleError,
+  invokeWithErrorHandling,
+  _Set as Set,
+} from "../util";
+import type { SimpleSet } from "../util";
 import type { Component } from "types/component";
-import {DebuggerOptions, DebuggerEvent} from "v3/debug";
+import { DebuggerOptions, DebuggerEvent } from "v3/debug";
+import Dep, { pushTarget, popTarget, DepTarget } from "./dep";
+import { traverse } from "./traverse";
 
 let uid = 0;
 
@@ -199,7 +211,7 @@ export default class Watcher implements DepTarget {
     } else if (this.sync) {
       this.run();
     } else {
-      queueWatcher(this);
+      // queueWatcher(this);
     }
   }
 

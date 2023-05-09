@@ -2,30 +2,26 @@ import { initMixin } from "./init";
 import { stateMixin } from "./state";
 import { renderMixin } from "./render";
 import { eventsMixin } from "./events";
-import {lifecycleMixin} from "./lifecycle";
+import { lifecycleMixin } from "./lifecycle";
 
 // 创建一个Vue方法
-function Vue(){
-    this._init();
+function Vue() {
+  this._init();
 }
 
+// @ts-ignore
+initMixin(Vue);
+// @ts-ignore
+stateMixin(Vue);
+// @ts-ignore
+eventsMixin(Vue);
+// @ts-ignore
+lifecycleMixin(Vue);
+// @ts-ignore
+renderMixin(Vue);
 
-//@ts-expect-error Vue has function type
-initMixin(Vue)
-// @ts-ignore
-stateMixin(Vue)
-// @ts-ignore
-eventsMixin(Vue)
-// @ts-ignore
-lifecycleMixin(Vue)
-// @ts-ignore
-renderMixin(Vue)
-
-Vue.prototype._init()
-console.log(Vue.prototype)
-
+Vue.prototype._init();
+console.log(Vue.prototype);
 
 // 导出Vue
-export default Vue
-
-
+export default Vue;
