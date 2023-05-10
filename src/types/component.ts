@@ -5,6 +5,8 @@ export declare class Component {
   constructor(options?: any);
   static options: Record<string, any>;
 
+  $emit: (event: string, ...args: Array<any>) => Component;
+
   _init: Function;
   _uid: number;
 
@@ -14,4 +16,7 @@ export declare class Component {
 
   _watcher: Watcher | null;
   _isBeingDestroyed: boolean;
+  _isMounted: boolean;
+  _isDestroyed: boolean;
+  _hasHookEvent: boolean;
 }

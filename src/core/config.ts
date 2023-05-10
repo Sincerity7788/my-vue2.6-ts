@@ -2,6 +2,7 @@ import { Component } from "types/component";
 
 export interface Config {
   performance: boolean;
+  devtools: boolean;
   errorHandler?: (err: Error, vm: Component | null, info: string) => void;
   warnHandler?: (msg: string, vm: Component | null, trace: string) => void;
   // private
@@ -19,6 +20,10 @@ export default {
    * Error handler for watcher errors
    */
   errorHandler: null,
+  /**
+   * Whether to enable devtools
+   */
+  devtools: __DEV__,
   /**
    * Warn handler for watcher warns
    */

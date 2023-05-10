@@ -5,6 +5,15 @@ let uid = 0;
 
 const pendingCleanupDeps: Dep[] = [];
 
+export const cleanupDeps = () => {
+  for (let i = 0; i < pendingCleanupDeps.length; i++) {
+    const dep = pendingCleanupDeps[i];
+    dep.subs = dep.subs.filter((s) => s);
+    dep._pending = false;
+  }
+  pendingCleanupDeps.length = 0;
+};
+
 export interface DepTarget extends DebuggerOptions {
   id: number;
   addDep(dep: Dep): void;

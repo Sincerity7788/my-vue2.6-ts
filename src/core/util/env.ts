@@ -2,6 +2,8 @@
 // 导出当前运行环境是否为浏览器
 export const inBrowser = typeof window !== "undefined";
 
+export const devtools = inBrowser && window.__VUE_DEVTOOLS_GLOBAL_HOOK__;
+
 // 导出判断当前是否在ssr环境中 isServerRendering
 export function isServerRendering() {
   console.log("判断当前是否在ssr环境中");
